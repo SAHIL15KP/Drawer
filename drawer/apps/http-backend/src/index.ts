@@ -3,13 +3,14 @@ import jwt from "jsonwebtoken"
 const app = express()
 import { ENV } from "./config"
 import { middleware } from "./middleware"
-import {CreateUserSchema} from "@repo/common/types"
+import { CreateUserSchema } from "@repo/common/types"
 // console.log(JWT_SECRET)
-app.post("/signup", (req,res)=>{
-    res.status(200).json({msg:"hey from post"})
+
+app.post("/signup", (req, res) => {
+    res.status(200).json({ msg: "hey from post" })
 })
 
-app.post("/signin", (req,res)=>{
+app.post("/signin", (req, res) => {
     const userId = 1
     const token = jwt.sign({
         userId
@@ -19,8 +20,8 @@ app.post("/signin", (req,res)=>{
     })
 })
 
-app.post("/room",middleware,(req,res)=>{
-    res.status(200).json({msg:"hey from post"})
+app.post("/room", middleware, (req, res) => {
+    res.status(200).json({ msg: "hey from post" })
 })
 
 app.listen(ENV.PORT)
